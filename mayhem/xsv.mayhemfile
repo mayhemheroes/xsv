@@ -1,0 +1,5 @@
+project: xsv
+target: xsv
+
+cmds:
+  - cmd: /xsv stats --everything @@
