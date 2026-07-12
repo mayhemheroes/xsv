@@ -1,0 +1,15 @@
+# Preserves the legacy `xsv` Mayhem target name (run-history parity). The binary is an
+# IN-PROCESS libFuzzer+ASan harness over xsv's own `stats --everything` command path —
+# the raw CLI was converted per the unfuzzable-raw-CLI rule: on current Mayhem infra the
+# plain CLI records 0 edges (run #19), ASan-on-CLI fails launch smoke (run #17), and
+# cargo-afl/afl:true SIGILLs at launch (run #18). Evidence in mayhem/build.sh.
+project: xsv
+target: xsv
+
+cmds:
+  - cmd: /mayhem/xsv
+    libfuzzer: true
+
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/xsv/testsuite

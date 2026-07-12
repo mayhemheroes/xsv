@@ -1,0 +1,5 @@
+name,city,notes
+alice,"New York","quoted, comma"
+bob,Paris,"line
+break"
+carol,Tōkyō,unicode✓
